@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Student Finance Tracker</title>
+  <link rel="stylesheet" href="./styles/style.css" />
+</head>
+<body>
+  <a href="#main" class="skip-link">Skip to content</a>
+
+  <header>
+    <h1>Student Finance Tracker</h1>
+    <nav>
+      <ul>
+        <li><a href="#dashboard">Dashboard</a></li>
+        <li><a href="#records">Records</a></li>
+        <li><a href="#add">Add</a></li>
+        <li><a href="#settings">Settings</a></li>
+        <li><a href="#about">About</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main">
+    <section id="dashboard">
+      <h2>Dashboard</h2>
+      <div id="stats">
+        <p>Total Records: <span id="total-records">0</span></p>
+        <p>Total Spent: <span id="total-spent">0</span></p>
+        <p>Top Category: <span id="top-category">-</span></p>
+        <p>Cap Status: <span id="cap-status" aria-live="polite">Within budget</span></p>
+      </div>
+    </section>
+
+    <section id="records">
+      <h2>Records</h2>
+      <div class="search-area">
+        <input id="search-input" type="text" placeholder="Search (regex supported)" />
+        <button id="clear-search">Clear</button>
+      </div>
+      <table id="records-table" aria-live="polite">
+        <thead>
+          <tr>
+            <th>Description</th>
+            <th>Amount</th>
+            <th>Category</th>
+            <th>Date</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </section>
+
+    <section id="add">
+      <h2>Add New Record</h2>
+      <form id="record-form">
+        <label>
+          Description
+          <input type="text" id="description" required />
+        </label>
+        <label>
+          Amount
+          <input type="number" step="0.01" id="amount" required />
+        </label>
+        <label>
+          Category
+          <select id="category" required>
+            <option>Food</option>
+            <option>Books</option>
+            <option>Transport</option>
+            <option>Entertainment</option>
+            <option>Fees</option>
+            <option>Other</option>
+          </select>
+        </label>
+        <label>
+          Date
+          <input type="date" id="date" required />
+        </label>
+        <button type="submit">Add Record</button>
+      </form>
+      <p id="form-error" role="alert"></p>
+    </section>
+
+    <section id="settings">
+      <h2>Settings</h2>
+      <label>
+        Spending Cap:
+        <input type="number" id="cap-input" placeholder="Enter your budget cap" />
+      </label>
+      <button id="save-settings">Save</button>
+    </section>
+
+    <section id="about">
+      <h2>About</h2>
+      <p>This app helps students track their expenses, analyze spending, and stay within budget.</p>
+      <p>Built by Evan Ndahiro • <a href="mailto:e.ndahiro@alustudent.com">Contact</a></p>
+      <p><a href="https://github.com/endahiro" target="_blank" rel="noopener">GitHub</a></p>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2025 Student Finance Tracker</p>
+  </footer>
+
+  <script type="module" src="./scripts/ui.js"></script>
+</body>
+</html>
