@@ -44,8 +44,8 @@ A responsive, accessible web app to help students track expenses, analyze spendi
 
 1. Clone the repo:
    ```bash
-   git clone https://github.com/YOUR_USERNAME/student-finance-tracker.git
+   git clone https://github.com/endahiro/student-finance-tracker.git
 
 ## URL Link
 
-## Video Link
+## Demo/Video Link
