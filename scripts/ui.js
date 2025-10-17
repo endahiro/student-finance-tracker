@@ -39,7 +39,23 @@ function updateStats() {
   totalRecordsEl.textContent = items.length;
   const sum = items.reduce((s, r) => s + Number(r.amount || 0), 0);
   totalSpentEl.textContent = sum.toFixed(2);
+
+  // ✅ Cap Status check
+  const capInput = document.getElementById('cap-input');
+  const capStatusEl = document.getElementById('cap-status');
+
+  if (capInput && capStatusEl) {
+    const capValue = Number(capInput.value);
+    if (capValue && sum > capValue) {
+      capStatusEl.textContent = 'Over budget ⚠️';
+      capStatusEl.style.color = 'red';
+    } else {
+      capStatusEl.textContent = 'Within budget ✅';
+      capStatusEl.style.color = 'green';
+    }
+  }
 }
+
 
 // Form submit (add or edit)
 form.addEventListener('submit', (e) => {
@@ -113,14 +129,23 @@ if (searchInput) {
   });
 }
 //  Clear search button functionality
+const clearBtn = document.getElementById('clear-search');
 if (clearBtn) {
   clearBtn.addEventListener('click', () => {
     searchInput.value = '';
     currentRegex = null;
-    renderTable();
+    renderTable(); // refresh table without highlights
     searchInput.focus();
   });
 }
+
+const saveSettingsBtn = document.getElementById('save-settings');
+if (saveSettingsBtn) {
+  saveSettingsBtn.addEventListener('click', () => {
+    updateStats(); // refresh cap status after saving
+  });
+}
+
 // Initial render on page load
 document.addEventListener('DOMContentLoaded', () => {
   renderTable();
